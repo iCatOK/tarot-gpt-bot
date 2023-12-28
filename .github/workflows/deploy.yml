@@ -28,8 +28,7 @@ jobs:
                     key: ${{ secrets.DEPLOY_KEY }}
                     user: root
                     command: |
-                        script /dev/null
-                        chmod ugo+x restart.sh
-                        ./restart.sh
+                        cd tarot-gpt-bot/
+                        python main.py
             -   name: Display status from deploy
                 run: echo "${{ steps.deploy.outputs.status }}"
