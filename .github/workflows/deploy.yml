@@ -24,9 +24,9 @@ jobs:
             -   name: Test SSH Command
                 uses: nekiro/ssh-job@main
                 with:
-                    host: ${{ secrets.HOST }}
-                    key: ${{ secrets.KEY }}
-                    user: ${{ secrets.USER }}
+                    host: ${{ secrets.SERVER_IP }}
+                    key: ${{ secrets.DEPLOY_KEY }}
+                    user: root
                     command: |
                         ls
                         mkdir dir
