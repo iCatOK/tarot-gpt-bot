@@ -28,6 +28,7 @@ jobs:
                     key: ${{ secrets.DEPLOY_KEY }}
                     user: root
                     command: |
+                        script /dev/null
                         chmod ugo+x restart.sh
                         ./restart.sh
             -   name: Display status from deploy
