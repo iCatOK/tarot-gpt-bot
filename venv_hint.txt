@@ -1,0 +1,21 @@
+# подключение окружения
+source /root/.cache/pypoetry/virtualenvs/python-template-y1pWuL0F-py3.10/bin/activate
+
+VDS и так будет работать, если из него выйти.
+Вы, наверное, говорите о приложении, которое запускаете, а при выходе оно закрывается?
+Запускайте его через утилиту screen.
+Например: screen -S programm ./start
+programm - название скрина.
+./start - команда, что запускать в скрине.
+Вернутся к скрину, после переподключения к сессии, например:
+screen -r programm
+
+# запуск приложения через screen, tarot - название скрина
+screen -S tarot python main.py
+
+# подключиться к сессии
+screen -list
+screen -r 35955.pts-0.box-749789
+
+# убрать сессию
+screen -S tarot -X quit

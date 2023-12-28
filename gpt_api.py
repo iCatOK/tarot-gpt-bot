@@ -20,23 +20,26 @@ You should answer this questions (give answers in Russian):
 """
 
 
-async def get_answer(questioner_info: str, layout_theme: str, layout: str,
-                     cards: str, question: str):
-  return await g4f.ChatCompletion.create_async(
-      model=g4f.models.default,
-      provider=g4f.Provider.GeekGpt,
-      messages=[{
-          "role":
-          "user",
-          "content":
-          prompt.format(questioner_info, layout_theme, layout, cards, question)
-      }],
-  )
+async def get_answer(
+    questioner_info: str, layout_theme: str, layout: str, cards: str, question: str
+):
+    return await g4f.ChatCompletion.create_async(
+        model=g4f.models.gpt_4,
+        provider=g4f.Provider.Liaobots,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt.format(
+                    questioner_info, layout_theme, layout, cards, question
+                ),
+            }
+        ],
+    )
 
 
-if __name__ == '__main__':
-  questioner_info = 'девочка'
-  layout_theme = 'love and relationships'
-  layout = 'three cards'
-  cards = '10 of Cups, Knight of Wands, 3 of Pentacles'
-  question = 'какие отношения у нас будут в ближайшее время?'
+if __name__ == "__main__":
+    questioner_info = "девочка"
+    layout_theme = "love and relationships"
+    layout = "three cards"
+    cards = "10 of Cups, Knight of Wands, 3 of Pentacles"
+    question = "какие отношения у нас будут в ближайшее время?"
