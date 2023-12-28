@@ -28,12 +28,7 @@ jobs:
                     key: ${{ secrets.DEPLOY_KEY }}
                     user: root
                     command: |
-                        ls
-                        script /dev/null
-                        screen -list
-                        cd tarot-gpt-bot/
-                        source /root/.cache/pypoetry/virtualenvs/python-template-y1pWuL0F-py3.10/bin/activate
-                        screen -X quit
-                        screen -S tarot python main.py
+                        chmod ugo+x restart.sh
+                        ./restart.sh
             -   name: Display status from deploy
                 run: echo "${{ steps.deploy.outputs.status }}"
