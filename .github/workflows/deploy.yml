@@ -21,8 +21,8 @@ jobs:
                     DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
                 with:
                     flags: '-avc --delete'
-                    src: 'dist/'
-                    dest: 'root@"${{secrets.SERVER_IP}}":/path/on/remote'
+                    src: 'public/'
+                    dest: 'root@"${{secrets.SERVER_IP}}":/root/tarot-gpt-bot'
  
             -   name: Display status from deploy
                 run: echo "${{ steps.deploy.outputs.status }}"
