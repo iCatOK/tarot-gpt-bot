@@ -13,7 +13,7 @@ Question: {4}
 
 You should answer this questions (give answers in Russian):
 
-1. What cards can tell about theme of layout? Analyze relationships between cards and give summary answer for the question.
+1. What cards can tell about theme of layout? Analyze relationships between cards (or card itself if there olny one card) and give answer for the questioner's question with information from layout.
 2. If there a cards like Knight, Queen, King or Page - analyze characteristics of people that can appear in the future in question's context.
 3. Give questions that questioner should ask herself/himself about to solve future problems.
 4. Give advices to solve problems and evade trouble in future.
