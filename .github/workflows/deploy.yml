@@ -21,14 +21,14 @@ jobs:
                     flags: '-avc --delete'
                     src: '/'
                     dest: 'root@"${{secrets.SERVER_IP}}":/root/tarot-gpt-bot'
-            -   name: Test SSH Command
-                uses: nekiro/ssh-job@main
-                with:
-                    host: ${{ secrets.SERVER_IP }}
-                    key: ${{ secrets.DEPLOY_KEY }}
-                    user: root
-                    command: |
-                        cd tarot-gpt-bot/
-                        python main.py
+            # -   name: Test SSH Command
+            #     uses: nekiro/ssh-job@main
+            #     with:
+            #         host: ${{ secrets.SERVER_IP }}
+            #         key: ${{ secrets.DEPLOY_KEY }}
+            #         user: root
+            #         command: |
+            #             cd tarot-gpt-bot/
+            #             python main.py
             -   name: Display status from deploy
                 run: echo "${{ steps.deploy.outputs.status }}"
