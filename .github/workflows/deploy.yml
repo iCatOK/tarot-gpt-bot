@@ -31,7 +31,7 @@ jobs:
                         ls
                         cd tarot-gpt-bot/
                         source /root/.cache/pypoetry/virtualenvs/python-template-y1pWuL0F-py3.10/bin/activate
-                        killall screen
+                        screen -X quit
                         screen -S tarot python main.py
             -   name: Display status from deploy
                 run: echo "${{ steps.deploy.outputs.status }}"
