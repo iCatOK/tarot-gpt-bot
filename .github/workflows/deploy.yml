@@ -19,7 +19,7 @@ jobs:
                     DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
                 with:
                     flags: '-avc --delete'
-                    src: 'tarot-gpt-bot/'
+                    src: '/'
                     dest: 'root@"${{secrets.SERVER_IP}}":/root/tarot-gpt-bot'
  
             -   name: Display status from deploy
