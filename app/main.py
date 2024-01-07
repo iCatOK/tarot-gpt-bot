@@ -4,10 +4,12 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 
 import os
+import pathlib
 from dotenv import load_dotenv
-from gpt_api import get_answer
+from gpt_api import get_answer_gpt_3, get_answer_gpt_4
 
-dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
+current_path = pathlib.Path(__file__).parent.parent.resolve()
+dotenv_path = os.path.join(current_path.absolute(), ".env")
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
@@ -44,9 +46,19 @@ async def cmd_start(message: types.Message):
       """
     )
 
+@dp.message(Command("ask-gpt3"))
+async def get_tarot_info_gpt_3(message: types.Message):
+    logging.info('Get tarot layout interpreatition with GPT-3: %s', message.text)
+    await get_tarot_info(message, get_answer_gpt_3)
 
-@dp.message(Command("ask"))
-async def get_tarot_info(message: types.Message):
+
+@dp.message(Command("ask-gpt4"))
+async def get_tarot_info_gpt_4(message: types.Message):
+    logging.info('Get tarot layout interpreatition with GPT-3: %s', message.text)
+    await get_tarot_info(message, get_answer_gpt_4)
+
+
+async def get_tarot_info(message: types.Message, get_answer_method: callable):
     user_message = message.text
 
     if not user_message:
@@ -67,12 +79,13 @@ async def get_tarot_info(message: types.Message):
         await message.answer(
             "Информация получена! Дождитесь ответа, примерно в течении 1-2 минуты."
         )
-        response = await get_answer(questioner_info, theme, layout, cards, question)
+        response = await get_answer_method(questioner_info, theme, layout, cards, question)
+        logging.info(f'Response is {type(response)} \n {response}')
         chat_gpt_response = response
     except Exception as e:
         chat_gpt_response = f"Извините, произошла ошибка. \n{e}"
 
-    await message.answer(str(chat_gpt_response))
+    await message.answer(chat_gpt_response)
 
 
 # Запуск процесса поллинга новых апдейтов
